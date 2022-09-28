@@ -1,15 +1,16 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CoverBlurredImage extends StatelessWidget {
   const CoverBlurredImage(
-    this.url, {
+    this.bytes, {
     Key? key,
     this.blurStrength = 15,
   }) : super(key: key);
 
-  final String url;
+  final Uint8List bytes;
   final double blurStrength;
 
   @override
@@ -19,8 +20,8 @@ class CoverBlurredImage extends StatelessWidget {
         sigmaY: blurStrength,
         sigmaX: blurStrength,
       ),
-      child: Image.network(
-        url,
+      child: Image.memory(
+        bytes,
         fit: BoxFit.cover,
       ),
     );
